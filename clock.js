@@ -1,7 +1,8 @@
+import { getHours, getMinutes, getSeconds } from "date-fns";
 const today = new Date();
 
-const h = today.getHours();
-const m = today.getMinutes();
-const s = today.getSeconds();
+const h = getHours(today);
+const m = getMinutes(today);
+const s = getSeconds(today);
 
 console.log(`${h}:${m}:${s}`);
