@@ -61,6 +61,8 @@
 </body>
 
 <script>
+  const rejectedSymbols = ["-", "+", "e", "E", "."];
+
   function setMinutesValue(val) {
     document.querySelector("#minutes").value = val;
   }
@@ -72,21 +74,37 @@
   function validateMinutesTime(minHTML) {
     const minutes = minHTML.value;
 
-    if (minutes.length > 2) {
-      setMinutesValue(minutes.slice(0, -1));
-    }
+    // remove all rejected symbols from the string
+    const filteredValue = minutes
+      .split("")
+      .filter((char) => !rejectedSymbols.includes(char))
+      .join("");
 
-    console.log(minutes);
+    console.log(filteredValue);
+
+    if (filteredValue.length > 2) {
+      setMinutesValue(filteredValue.slice(0, -1));
+    } else {
+      setMinutesValue(filteredValue);
+    }
   }
 
   function validateSecondsTime(secHTML) {
     const seconds = secHTML.value;
 
-    if (seconds.length > 2) {
-      setSecondsValue(seconds.slice(0, -1));
-    }
+    // remove all rejected symbols from the string
+    const filteredValue = seconds
+      .split("")
+      .filter((char) => !rejectedSymbols.includes(char))
+      .join("");
 
-    console.log(seconds);
+    console.log(filteredValue);
+
+    if (filteredValue.length > 2) {
+      setSecondsValue(filteredValue.slice(0, -1));
+    } else {
+      setSecondsValue(filteredValue);
+    }
   }
 
   function makeMinutesZero(minHTML) {
