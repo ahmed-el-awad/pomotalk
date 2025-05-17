@@ -41,8 +41,8 @@
       min="0"
       value="0"
       onclick="this.select()"
-      onkeydown=""
-      onblur="validateTime()"
+      onkeydown="validateTime(this)"
+      onblur="makeZero(this)"
     />
 
     <p>:</p>
@@ -54,7 +54,31 @@
       min="0"
       value="0"
       onclick="this.select()"
-      onblur="validateTime()"
     />
   </div>
 </body>
+
+<script>
+  function setMinutesValue(val) {
+    document.querySelector("#minutes").value = val;
+  }
+
+  function validateTime(minHTML) {
+    if (minHTML.value.length > 2) {
+      setMinutesValue(minHTML.value.slice(0, -1));
+    }
+
+    console.log(minHTML.value);
+  }
+
+  function makeZero(minHTML) {
+    if (minHTML.value.length == 0) {
+      setMinutesValue(0);
+    }
+
+    // if there's multiple 0s, just have a single 0
+    if (minHTML.value.split("").every((n) => n == "0")) {
+      setMinutesValue(0);
+    }
+  }
+</script>
