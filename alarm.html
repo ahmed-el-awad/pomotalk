@@ -94,6 +94,10 @@
     if (minHTML.value.split("").every((n) => n == "0")) {
       setMinutesValue(0);
     }
+
+    if (parseInt(minHTML.value) > 59) {
+      setMinutesValue(59);
+    }
   }
 
   function makeSecondsZero(secHTML) {
@@ -104,6 +108,10 @@
     // if there's multiple 0s, just have a single 0
     if (secHTML.value.split("").every((n) => n == "0")) {
       setSecondsValue(0);
+    }
+
+    if (parseInt(secHTML.value) > 59) {
+      setSecondsValue(59);
     }
   }
 </script>
