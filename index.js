@@ -6,7 +6,7 @@ const createWindow = () => {
     height: 600,
   });
 
-  win.loadFile("alarm.html");
+  win.loadFile("ui/alarm.html");
 };
 
 app.whenReady().then(() => {
