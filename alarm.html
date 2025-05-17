@@ -41,8 +41,8 @@
       min="0"
       value="0"
       onclick="this.select()"
-      onkeydown="validateTime(this)"
-      onblur="makeZero(this)"
+      onkeydown="validateMinutesTime(this)"
+      onblur="makeMinutesZero(this)"
     />
 
     <p>:</p>
@@ -54,6 +54,8 @@
       min="0"
       value="0"
       onclick="this.select()"
+      onkeydown="validateSecondsTime(this)"
+      onblur="makeSecondsZero(this)"
     />
   </div>
 </body>
@@ -63,7 +65,11 @@
     document.querySelector("#minutes").value = val;
   }
 
-  function validateTime(minHTML) {
+  function setSecondsValue(val) {
+    document.querySelector("#seconds").value = val;
+  }
+
+  function validateMinutesTime(minHTML) {
     if (minHTML.value.length > 2) {
       setMinutesValue(minHTML.value.slice(0, -1));
     }
@@ -71,7 +77,15 @@
     console.log(minHTML.value);
   }
 
-  function makeZero(minHTML) {
+  function validateSecondsTime(secHTML) {
+    if (secHTML.value.length > 2) {
+      setSecondsValue(secHTML.value.slice(0, -1));
+    }
+
+    console.log(secHTML.value);
+  }
+
+  function makeMinutesZero(minHTML) {
     if (minHTML.value.length == 0) {
       setMinutesValue(0);
     }
@@ -79,6 +93,17 @@
     // if there's multiple 0s, just have a single 0
     if (minHTML.value.split("").every((n) => n == "0")) {
       setMinutesValue(0);
+    }
+  }
+
+  function makeSecondsZero(secHTML) {
+    if (secHTML.value.length == 0) {
+      setSecondsValue(0);
+    }
+
+    // if there's multiple 0s, just have a single 0
+    if (secHTML.value.split("").every((n) => n == "0")) {
+      setSecondsValue(0);
     }
   }
 </script>
