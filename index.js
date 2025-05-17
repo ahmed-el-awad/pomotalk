@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+import { app, BrowserWindow } from "electron";
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -6,13 +6,11 @@ const createWindow = () => {
     height: 600,
   });
 
-  win.loadURL("https://www.electronjs.org/docs/latest/tutorial/tutorial-first-app");
+  win.loadFile("alarm.html");
 };
 
 app.whenReady().then(() => {
-  for (let i = 0; i <= 3; i++) {
-    createWindow();
-  }
+  createWindow();
 
   app.on("activate", () => {
     createWindow();
@@ -20,8 +18,7 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", () => {
-  if (process.platform != "win32") {
-    console.log("lol bye");
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });

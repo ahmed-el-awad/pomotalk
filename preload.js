@@ -1,1 +1,1 @@
-const { constBridge } = require("electron");
+import { constBridge } from "electron";
