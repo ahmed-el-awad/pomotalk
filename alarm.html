@@ -70,47 +70,55 @@
   }
 
   function validateMinutesTime(minHTML) {
-    if (minHTML.value.length > 2) {
-      setMinutesValue(minHTML.value.slice(0, -1));
+    const minutes = minHTML.value;
+
+    if (minutes.length > 2) {
+      setMinutesValue(minutes.slice(0, -1));
     }
 
-    console.log(minHTML.value);
+    console.log(minutes);
   }
 
   function validateSecondsTime(secHTML) {
-    if (secHTML.value.length > 2) {
-      setSecondsValue(secHTML.value.slice(0, -1));
+    const seconds = secHTML.value;
+
+    if (seconds.length > 2) {
+      setSecondsValue(seconds.slice(0, -1));
     }
 
-    console.log(secHTML.value);
+    console.log(seconds);
   }
 
   function makeMinutesZero(minHTML) {
-    if (minHTML.value.length == 0) {
+    const minutes = minHTML.value;
+
+    if (minutes.length == 0) {
       setMinutesValue(0);
     }
 
     // if there's multiple 0s, just have a single 0
-    if (minHTML.value.split("").every((n) => n == "0")) {
+    if (minutes.split("").every((n) => n == "0")) {
       setMinutesValue(0);
     }
 
-    if (parseInt(minHTML.value) > 59) {
+    if (parseInt(minutes) > 59) {
       setMinutesValue(59);
     }
   }
 
   function makeSecondsZero(secHTML) {
-    if (secHTML.value.length == 0) {
+    const seconds = secHTML.value;
+
+    if (seconds.length == 0) {
       setSecondsValue(0);
     }
 
     // if there's multiple 0s, just have a single 0
-    if (secHTML.value.split("").every((n) => n == "0")) {
+    if (seconds.split("").every((n) => n == "0")) {
       setSecondsValue(0);
     }
 
-    if (parseInt(secHTML.value) > 59) {
+    if (parseInt(seconds) > 59) {
       setSecondsValue(59);
     }
   }
