@@ -1,14 +1,14 @@
 const rejectedSymbols = ["-", "+", "e", "E", "."];
 
-function setMinutesValue(val) {
-  document.querySelector("#minutes").value = val;
+function setMinutesValue(val: string | number) {
+  (document.querySelector("#minutes") as HTMLInputElement).value = val.toString();
 }
 
-function setSecondsValue(val) {
-  document.querySelector("#seconds").value = val;
+function setSecondsValue(val: string | number) {
+  (document.querySelector("#seconds") as HTMLInputElement).value = val.toString();
 }
 
-function validateMinutesTime(minHTML) {
+function validateMinutesTime(minHTML: HTMLInputElement) {
   const minutes = minHTML.value;
 
   // remove all rejected symbols from the string
@@ -25,8 +25,7 @@ function validateMinutesTime(minHTML) {
     setMinutesValue(filteredValue);
   }
 }
-
-function validateSecondsTime(secHTML) {
+function validateSecondsTime(secHTML: HTMLInputElement) {
   const seconds = secHTML.value;
 
   // remove all rejected symbols from the string
@@ -44,7 +43,7 @@ function validateSecondsTime(secHTML) {
   }
 }
 
-function makeMinutesZero(minHTML) {
+function makeMinutesZero(minHTML: HTMLInputElement) {
   const minutes = minHTML.value;
 
   if (minutes.length == 0) {
@@ -61,7 +60,7 @@ function makeMinutesZero(minHTML) {
   }
 }
 
-function makeSecondsZero(secHTML) {
+function makeSecondsZero(secHTML: HTMLInputElement) {
   const seconds = secHTML.value;
 
   if (seconds.length == 0) {
@@ -79,11 +78,11 @@ function makeSecondsZero(secHTML) {
 }
 
 function startCountdown() {
-  let minutes = parseInt(document.querySelector("#minutes").value);
-  let seconds = parseInt(document.querySelector("#seconds").value);
+  let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
+  let seconds = parseInt((document.querySelector("#seconds") as HTMLInputElement).value);
 
   setInterval(() => {
-    document.querySelector("#time").innerHTML = minutes + ":" + seconds;
+    (document.querySelector("#time") as HTMLInputElement).innerHTML = minutes + ":" + seconds;
 
     console.log(minutes + ":" + seconds);
   }, 1000);
