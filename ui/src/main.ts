@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 const rejectedSymbols = ["-", "+", "e", "E", "."];
 
 function setMinutesValue(val: string | number) {
@@ -8,7 +10,7 @@ function setSecondsValue(val: string | number) {
   (document.querySelector("#seconds") as HTMLInputElement).value = val.toString();
 }
 
-function validateMinutesTime(minHTML: HTMLInputElement) {
+export function validateMinutesTime(minHTML: HTMLInputElement) {
   const minutes = minHTML.value;
 
   // remove all rejected symbols from the string
@@ -25,7 +27,7 @@ function validateMinutesTime(minHTML: HTMLInputElement) {
     setMinutesValue(filteredValue);
   }
 }
-function validateSecondsTime(secHTML: HTMLInputElement) {
+export function validateSecondsTime(secHTML: HTMLInputElement) {
   const seconds = secHTML.value;
 
   // remove all rejected symbols from the string
@@ -43,7 +45,7 @@ function validateSecondsTime(secHTML: HTMLInputElement) {
   }
 }
 
-function makeMinutesZero(minHTML: HTMLInputElement) {
+export function makeMinutesZero(minHTML: HTMLInputElement) {
   const minutes = minHTML.value;
 
   if (minutes.length == 0) {
@@ -60,7 +62,7 @@ function makeMinutesZero(minHTML: HTMLInputElement) {
   }
 }
 
-function makeSecondsZero(secHTML: HTMLInputElement) {
+export function makeSecondsZero(secHTML: HTMLInputElement) {
   const seconds = secHTML.value;
 
   if (seconds.length == 0) {
@@ -77,9 +79,18 @@ function makeSecondsZero(secHTML: HTMLInputElement) {
   }
 }
 
-function startCountdown() {
+export function startCountdown() {
   let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
   let seconds = parseInt((document.querySelector("#seconds") as HTMLInputElement).value);
+
+  let date = new Date();
+
+  date.setSeconds(date.getSeconds() + seconds);
+  date.setMinutes(date.getMinutes() + minutes);
+
+  const formattedDate = format(date, "d MMM mm:ss aaa");
+
+  (document.querySelector("#newDate") as HTMLInputElement).innerHTML = formattedDate;
 
   setInterval(() => {
     (document.querySelector("#time") as HTMLInputElement).innerHTML = minutes + ":" + seconds;
@@ -87,3 +98,9 @@ function startCountdown() {
     console.log(minutes + ":" + seconds);
   }, 1000);
 }
+
+(window as any).validateMinutesTime = validateMinutesTime;
+(window as any).validateSecondsTime = validateSecondsTime;
+(window as any).makeMinutesZero = makeMinutesZero;
+(window as any).makeSecondsZero = makeSecondsZero;
+(window as any).startCountdown = startCountdown;
