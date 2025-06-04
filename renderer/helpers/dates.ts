@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { FocusEvent } from "react";
 
 const rejectedSymbols = ["-", "+", "e", "E", "."];
 
@@ -45,8 +46,8 @@ export function validateSecondsTime(secHTML: HTMLInputElement) {
   }
 }
 
-export function makeMinutesZero(minHTML: HTMLInputElement) {
-  const minutes = minHTML.value;
+export function makeMinutesZero(event: FocusEvent<HTMLInputElement, Element>) {
+  const minutes = event.target.value;
 
   if (minutes.length == 0) {
     setMinutesValue(0);
@@ -62,8 +63,8 @@ export function makeMinutesZero(minHTML: HTMLInputElement) {
   }
 }
 
-export function makeSecondsZero(secHTML: HTMLInputElement) {
-  const seconds = secHTML.value;
+export function makeSecondsZero(event: FocusEvent<HTMLInputElement, Element>) {
+  const seconds = event.target.value;
 
   if (seconds.length == 0) {
     setSecondsValue(0);
