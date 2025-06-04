@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { FocusEvent } from "react";
 
 const rejectedSymbols = ["-", "+", "e", "E", "."];
@@ -28,6 +27,7 @@ export function validateMinutesTime(minHTML: HTMLInputElement) {
     setMinutesValue(filteredValue);
   }
 }
+
 export function validateSecondsTime(secHTML: HTMLInputElement) {
   const seconds = secHTML.value;
 
@@ -80,28 +80,7 @@ export function makeSecondsZero(event: FocusEvent<HTMLInputElement, Element>) {
   }
 }
 
-export function startCountdown() {
-  let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
-  let seconds = parseInt((document.querySelector("#seconds") as HTMLInputElement).value);
-
-  let date = new Date();
-
-  date.setSeconds(date.getSeconds() + seconds);
-  date.setMinutes(date.getMinutes() + minutes);
-
-  const formattedDate = format(date, "d MMM mm:ss aaa");
-
-  (document.querySelector("#newDate") as HTMLInputElement).innerHTML = formattedDate;
-
-  setInterval(() => {
-    (document.querySelector("#time") as HTMLInputElement).innerHTML = minutes + ":" + seconds;
-
-    console.log(minutes + ":" + seconds);
-  }, 1000);
-}
-
 (window as any).validateMinutesTime = validateMinutesTime;
 (window as any).validateSecondsTime = validateSecondsTime;
 (window as any).makeMinutesZero = makeMinutesZero;
 (window as any).makeSecondsZero = makeSecondsZero;
-(window as any).startCountdown = startCountdown;
