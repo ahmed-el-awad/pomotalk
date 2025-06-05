@@ -2,12 +2,13 @@ import React, { KeyboardEvent, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./alarm.module.css";
-import { format } from "date-fns";
+import { addSeconds, differenceInSeconds, format } from "date-fns";
 
 export default function AlarmPage() {
-  const [minutes, setMinutes] = useState(0);
-  const [time, setTime] = useState(null);
-  const [date, setDate] = useState(null);
+  const [minutesDOM, setMinutesDOM] = useState<number>(0);
+  const [secondsDOM, setSecondsDOM] = useState<number>(0);
+  const [timeDOM, setTimeDOM] = useState<string | null>(null);
+  const [dateDOM, setDateDOM] = useState<string | null>(null);
 
   function startCountdown() {
     let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
@@ -15,23 +16,23 @@ export default function AlarmPage() {
 
     let date = new Date();
 
-    date.setSeconds(date.getSeconds() + seconds);
-    date.setMinutes(date.getMinutes() + minutes);
+    let dateAfterTimeAdded = new Date(date.getTime());
+    dateAfterTimeAdded.setSeconds(dateAfterTimeAdded.getSeconds() + seconds);
+    dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutes);
 
-    const formattedDate = format(date, "d MMM mm:ss aaa");
+    // TODO: replace this var name to "formattedTime" after everything works correctly
+    //       the string param should also be changed to "mm:ss aaa"
 
-    setDate(formattedDate);
+    // the time showing when the timer will end
+    const formattedDate = format(dateAfterTimeAdded, "d MMM h:mm:ss aaa");
+    console.log(formattedDate);
 
-    setInterval(() => {
-      setTime(minutes + ":" + seconds);
+    setDateDOM(formattedDate);
 
-      console.log(minutes + ":" + seconds);
-    }, 1000);
+    const timeDiffInSeconds = differenceInSeconds(dateAfterTimeAdded, date);
+
+    console.log("the seconds diff is ", timeDiffInSeconds);
   }
-
-  const minutePressed = (event: KeyboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
-  };
 
   return (
     <React.Fragment>
@@ -46,10 +47,8 @@ export default function AlarmPage() {
               type="number"
               max="59"
               min="0"
-              value={minutes}
-              // onClick={select}
-              onChange={({ target: { value } }) => setMinutes(Number(value))}
-              // onBlur={makeMinutesZero}
+              value={minutesDOM}
+              onChange={({ target: { value } }) => setMinutesDOM(Number(value))}
             />
 
             <p>:</p>
@@ -59,18 +58,16 @@ export default function AlarmPage() {
               type="number"
               max="59"
               min="0"
-              value="0"
-              onChange={({ target: { value } }) => setMinutes(Number(value))}
-              // onkeydown="validateSecondsTime(this)"
-              // onblur="makeSecondsZero(this)"
+              value={secondsDOM}
+              onChange={({ target: { value } }) => setSecondsDOM(Number(value))}
             />
           </div>
           <button id="startBtn" onClick={() => startCountdown()}>
             Start
           </button>
 
-          <p id="time">{time}</p>
-          <p id="newDate">{date}</p>
+          <p id="time">{timeDOM}</p>
+          <p id="newDate">{dateDOM}</p>
         </div>
       </div>
       <div className="mt-1 w-full flex-wrap flex justify-center">
