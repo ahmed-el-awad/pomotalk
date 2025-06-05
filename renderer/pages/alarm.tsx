@@ -6,17 +6,14 @@ import { addSeconds, differenceInSeconds, format } from "date-fns";
 
 export default function AlarmPage() {
   const [minutesDOM, setMinutesDOM] = useState<number>(0);
-  const [secondsDOM, setSecondsDOM] = useState<number>(0);
   const [timeDOM, setTimeDOM] = useState<string | null>(null);
 
   function startCountdown() {
     let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
-    let seconds = parseInt((document.querySelector("#seconds") as HTMLInputElement).value);
 
     let date = new Date();
 
     let dateAfterTimeAdded = new Date(date.getTime());
-    dateAfterTimeAdded.setSeconds(dateAfterTimeAdded.getSeconds() + seconds);
     dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutes);
 
     // the time showing when the timer will end
@@ -45,17 +42,6 @@ export default function AlarmPage() {
               min="0"
               value={minutesDOM}
               onChange={({ target: { value } }) => setMinutesDOM(Number(value))}
-            />
-
-            <p>:</p>
-
-            <input
-              id="seconds"
-              type="number"
-              max="59"
-              min="0"
-              value={secondsDOM}
-              onChange={({ target: { value } }) => setSecondsDOM(Number(value))}
             />
           </div>
           <button id="startBtn" onClick={() => startCountdown()}>
