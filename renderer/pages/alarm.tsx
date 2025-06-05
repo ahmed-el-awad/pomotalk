@@ -8,7 +8,6 @@ export default function AlarmPage() {
   const [minutesDOM, setMinutesDOM] = useState<number>(0);
   const [secondsDOM, setSecondsDOM] = useState<number>(0);
   const [timeDOM, setTimeDOM] = useState<string | null>(null);
-  const [dateDOM, setDateDOM] = useState<string | null>(null);
 
   function startCountdown() {
     let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
@@ -20,14 +19,11 @@ export default function AlarmPage() {
     dateAfterTimeAdded.setSeconds(dateAfterTimeAdded.getSeconds() + seconds);
     dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutes);
 
-    // TODO: replace this var name to "formattedTime" after everything works correctly
-    //       the string param should also be changed to "mm:ss aaa"
-
     // the time showing when the timer will end
-    const formattedDate = format(dateAfterTimeAdded, "d MMM h:mm:ss aaa");
-    console.log(formattedDate);
+    const formattedTime = format(dateAfterTimeAdded, "h:mm aaa");
+    console.log(formattedTime);
 
-    setDateDOM(formattedDate);
+    setTimeDOM(formattedTime);
 
     const timeDiffInSeconds = differenceInSeconds(dateAfterTimeAdded, date);
 
@@ -67,7 +63,6 @@ export default function AlarmPage() {
           </button>
 
           <p id="time">{timeDOM}</p>
-          <p id="newDate">{dateDOM}</p>
         </div>
       </div>
       <div className="mt-1 w-full flex-wrap flex justify-center">
