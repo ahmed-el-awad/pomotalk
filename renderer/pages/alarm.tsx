@@ -1,30 +1,32 @@
-import React, { KeyboardEvent, useState } from "react";
+import React, { KeyboardEvent, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./alarm.module.css";
-import { addSeconds, differenceInSeconds, format } from "date-fns";
+import { addSeconds, differenceInSeconds, format, subSeconds } from "date-fns";
 
 export default function AlarmPage() {
-  const [minutesDOM, setMinutesDOM] = useState<number>(0);
-  const [timeDOM, setTimeDOM] = useState<string | null>(null);
+  const [minutesInput, setMinutesInput] = useState<number>(0);
+  const [countdownTimer, setCountdownTimer] = useState<string | null>(null);
+  const [endingTimeDOM, setEndingTimeDOM] = useState<string | null>(null);
+  const [timeDiffInSeconds, setTimeDiffInSeconds] = useState(null);
+
+  useEffect(() => {
+    console.log("useeffect time diff in seconds:", timeDiffInSeconds);
+  }, [timeDiffInSeconds]);
 
   function startCountdown() {
-    let minutes = parseInt((document.querySelector("#minutes") as HTMLInputElement).value);
-
     let date = new Date();
 
     let dateAfterTimeAdded = new Date(date.getTime());
-    dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutes);
+    dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutesInput);
 
     // the time showing when the timer will end
-    const formattedTime = format(dateAfterTimeAdded, "h:mm aaa");
-    console.log(formattedTime);
+    const endingTime = format(dateAfterTimeAdded, "h:mm aaa");
+    console.log(endingTime);
 
-    setTimeDOM(formattedTime);
+    setEndingTimeDOM(endingTime);
 
-    const timeDiffInSeconds = differenceInSeconds(dateAfterTimeAdded, date);
-
-    console.log("the seconds diff is ", timeDiffInSeconds);
+    setTimeDiffInSeconds(differenceInSeconds(dateAfterTimeAdded, date));
   }
 
   return (
@@ -40,15 +42,16 @@ export default function AlarmPage() {
               type="number"
               max="59"
               min="0"
-              value={minutesDOM}
-              onChange={({ target: { value } }) => setMinutesDOM(Number(value))}
+              value={minutesInput}
+              onChange={({ target: { value } }) => setMinutesInput(Number(value))}
             />
           </div>
           <button id="startBtn" onClick={() => startCountdown()}>
             Start
           </button>
 
-          <p id="time">{timeDOM}</p>
+          <p id="time">{endingTimeDOM}</p>
+          {/* <p>{timer.getTimeValues().toString()}</p> */}
         </div>
       </div>
       <div className="mt-1 w-full flex-wrap flex justify-center">
