@@ -42,6 +42,7 @@ export default function AlarmPage() {
               type="number"
               max="59"
               min="0"
+              placeholder="0"
               value={minutesInput}
               onChange={({ target: { value } }) => setMinutesInput(Number(value))}
             />
