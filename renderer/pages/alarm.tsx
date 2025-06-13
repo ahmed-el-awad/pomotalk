@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useState } from "react";
+import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./alarm.module.css";
@@ -9,10 +9,61 @@ export default function AlarmPage() {
   const [countdownTimer, setCountdownTimer] = useState<string | null>(null);
   const [endingTimeDOM, setEndingTimeDOM] = useState<string | null>(null);
   const [timeDiffInSeconds, setTimeDiffInSeconds] = useState(null);
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+
+    if (countdownTimer === "time's up!") {
+      // TODO: play a sound for the timer ending
+      return;
+    }
+
     console.log("useeffect time diff in seconds:", timeDiffInSeconds);
+
+    const interval = setInterval(() => {
+      setCountdownTimer(decrementCounter(convertSecondsToMinutes(timeDiffInSeconds)));
+      setTimeDiffInSeconds(timeDiffInSeconds - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [timeDiffInSeconds]);
+
+  function convertSecondsToMinutes(seconds: number): string {
+    if (seconds > 3599) {
+      return "59:59";
+    }
+
+    const mm = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const ss = (seconds % 60).toString().padStart(2, "0");
+
+    return `${mm}:${ss}`;
+  }
+
+  function decrementCounter(timer: string): string {
+    let [mins, secs] = timer.split(":").map((str) => parseInt(str));
+
+    if (mins === 0 && secs === 0) {
+      // return `time's up!`;
+    }
+
+    if (secs === 0) {
+      if (mins > 0) {
+        mins -= 1;
+        secs = 59;
+      }
+    } else {
+      secs -= 1;
+    }
+
+    const paddedMins = mins.toString().padStart(2, "0");
+    const paddedSecs = secs.toString().padStart(2, "0");
+
+    return `${paddedMins}:${paddedSecs}`;
+  }
 
   function startCountdown() {
     let date = new Date();
@@ -52,7 +103,7 @@ export default function AlarmPage() {
           </button>
 
           <p id="time">{endingTimeDOM}</p>
-          {/* <p>{timer.getTimeValues().toString()}</p> */}
+          <p>{countdownTimer}</p>
         </div>
       </div>
       <div className="mt-1 w-full flex-wrap flex justify-center">
