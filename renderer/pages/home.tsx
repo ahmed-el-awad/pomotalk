@@ -28,9 +28,6 @@ export default function HomePage() {
         <span>💕 </span>
         <Link href="/alarm">Open Alarm</Link>
       </div>
-      <div className="mt-1 w-full flex-wrap flex justify-center">
-        <Link href="/next">Go to next page</Link>
-      </div>
     </React.Fragment>
   );
 }

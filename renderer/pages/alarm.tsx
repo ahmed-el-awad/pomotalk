@@ -106,8 +106,8 @@ export default function AlarmPage() {
           <p>{countdownTimer}</p>
         </div>
       </div>
-      <div className="mt-1 w-full flex-wrap flex justify-center">
-        <Link href="/next">Go to next page</Link>
+      <div className="mt-1 w-full flex-wrap flex flex-col justify-center">
+        <Link href="/home">Go to home</Link>
       </div>
     </React.Fragment>
   );
