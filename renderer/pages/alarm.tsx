@@ -47,7 +47,7 @@ export default function AlarmPage() {
     let [mins, secs] = timer.split(":").map((str) => parseInt(str));
 
     if (mins === 0 && secs === 0) {
-      // return `time's up!`;
+      return `time's up!`;
     }
 
     if (secs === 0) {
