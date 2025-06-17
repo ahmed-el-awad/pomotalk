@@ -1,7 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 
-import { HeroUIProvider } from "@heroui/system";
+import { HeroUIProvider } from "@heroui/react";
 
 import "../styles/globals.css";
 
