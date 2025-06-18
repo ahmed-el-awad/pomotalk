@@ -3,11 +3,13 @@ import { FocusEvent } from "react";
 const rejectedSymbols = ["-", "+", "e", "E", "."];
 
 function setMinutesValue(val: string | number) {
-  (document.querySelector("#minutes") as HTMLInputElement).value = val.toString();
+  (document.querySelector("#minutes") as HTMLInputElement).value =
+    val.toString();
 }
 
 function setSecondsValue(val: string | number) {
-  (document.querySelector("#seconds") as HTMLInputElement).value = val.toString();
+  (document.querySelector("#seconds") as HTMLInputElement).value =
+    val.toString();
 }
 
 export function validateMinutesTime(minHTML: HTMLInputElement) {

@@ -25,7 +25,9 @@ export default function AlarmPage() {
     console.log("useeffect time diff in seconds:", timeDiffInSeconds);
 
     const interval = setInterval(() => {
-      setCountdownTimer(decrementCounter(convertSecondsToMinutes(timeDiffInSeconds)));
+      setCountdownTimer(
+        decrementCounter(convertSecondsToMinutes(timeDiffInSeconds))
+      );
       setTimeDiffInSeconds(timeDiffInSeconds - 1);
     }, 1000);
 
@@ -37,7 +39,9 @@ export default function AlarmPage() {
       return "59:59";
     }
 
-    const mm = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const mm = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, "0");
     const ss = (seconds % 60).toString().padStart(2, "0");
 
     return `${mm}:${ss}`;
@@ -69,7 +73,9 @@ export default function AlarmPage() {
     let date = new Date();
 
     let dateAfterTimeAdded = new Date(date.getTime());
-    dateAfterTimeAdded.setMinutes(dateAfterTimeAdded.getMinutes() + minutesInput);
+    dateAfterTimeAdded.setMinutes(
+      dateAfterTimeAdded.getMinutes() + minutesInput
+    );
 
     // the time showing when the timer will end
     const endingTime = format(dateAfterTimeAdded, "h:mm aaa");
@@ -85,7 +91,7 @@ export default function AlarmPage() {
       <Head>
         <title>Alarm</title>
       </Head>
-      <div className="grid grid-col-1 text-2xl w-full text-center">
+      <div className="grid-col-1 grid w-full text-center text-2xl">
         <div id="center-clock">
           <div id="container">
             <input
@@ -95,7 +101,9 @@ export default function AlarmPage() {
               min="0"
               placeholder="0"
               value={minutesInput}
-              onChange={({ target: { value } }) => setMinutesInput(Number(value))}
+              onChange={({ target: { value } }) =>
+                setMinutesInput(Number(value))
+              }
             />
           </div>
           <button id="startBtn" onClick={() => startCountdown()}>
@@ -106,7 +114,7 @@ export default function AlarmPage() {
           <p>{countdownTimer}</p>
         </div>
       </div>
-      <div className="mt-1 w-full flex-wrap flex flex-col justify-center">
+      <div className="mt-1 flex w-full flex-col flex-wrap justify-center">
         <Link href="/home">Go to home</Link>
       </div>
     </React.Fragment>

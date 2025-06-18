@@ -9,10 +9,10 @@ export default function HomePage() {
       <Head>
         <title>Home - Nextron (with-tailwindcss)</title>
       </Head>
-      <div className="grid grid-col-1 text-2xl w-full text-center">
+      <div className="grid-col-1 grid w-full text-center text-2xl">
         <div>
           <Image
-            className="ml-auto mr-auto"
+            className="mr-auto ml-auto"
             src="/images/logo.png"
             alt="Logo image"
             width={256}
