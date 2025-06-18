@@ -116,6 +116,7 @@ export default function AlarmPage() {
       </div>
       <div className="mt-1 flex w-full flex-col flex-wrap justify-center">
         <Link href="/home">Go to home</Link>
+        <Link href="/mainPage">Main</Link>
       </div>
     </React.Fragment>
   );
