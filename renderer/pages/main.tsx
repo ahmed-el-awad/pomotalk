@@ -20,7 +20,7 @@ const avatarColors: Colors[] = [
   "danger",
 ];
 
-export default function MainPage() {
+export default function Main() {
   return (
     <>
       <header className="bg-0 flex h-full items-center p-2">

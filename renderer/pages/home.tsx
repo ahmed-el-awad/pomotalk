@@ -26,7 +26,7 @@ export default function HomePage() {
         <span>tailwindcss</span>
         <span>=</span>
         <span>💕 </span>
-        <Link href="/mainPage">Open Main</Link>
+        <Link href="/main">Open Main</Link>
       </div>
     </React.Fragment>
   );
