@@ -1,7 +1,7 @@
 import { Avatar, AvatarGroup, Divider } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
-import Goals from "./goals";
+import Goals from "../components/goals";
 
 type Colors =
   | "default"
@@ -34,7 +34,7 @@ export default function MainPage() {
       </header>
       <Divider className="mb-4" />
       <Goals />
-      <Link href="/alarm">Alarm</Link>
+      <Link href="/home">Home</Link>
     </>
   );
 }

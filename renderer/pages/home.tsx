@@ -12,7 +12,7 @@ export default function HomePage() {
       <div className="grid-col-1 grid w-full text-center text-2xl">
         <div>
           <Image
-            className="mr-auto ml-auto"
+            className="ml-auto mr-auto"
             src="/images/logo.png"
             alt="Logo image"
             width={256}
@@ -26,7 +26,7 @@ export default function HomePage() {
         <span>tailwindcss</span>
         <span>=</span>
         <span>💕 </span>
-        <Link href="/alarm">Open Alarm</Link>
+        <Link href="/mainPage">Open Main</Link>
       </div>
     </React.Fragment>
   );
