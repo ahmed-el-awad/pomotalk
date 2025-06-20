@@ -26,7 +26,12 @@ export default function Main() {
     <>
       <header className="bg-0 flex h-full items-center p-2">
         <h1 className="mr-20">People</h1>
-        <AvatarGroup className="flex" size="sm" max={3} isBordered>
+        <AvatarGroup
+          className="flex *:cursor-default"
+          size="sm"
+          max={3}
+          isBordered
+        >
           <Avatar name="Ahmed" color={avatarColors[1]}></Avatar>
           <Avatar color={avatarColors[2]}></Avatar>
           <Avatar color={avatarColors[3]}></Avatar>
