@@ -2,6 +2,7 @@ import { Avatar, AvatarGroup, Divider } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
 import Goals from "../components/goals";
+import Chat from "../components/chat";
 
 type Colors =
   | "default"
@@ -32,8 +33,11 @@ export default function Main() {
           <Avatar color={avatarColors[4]}></Avatar>
         </AvatarGroup>
       </header>
-      <Divider className="mb-4" />
-      <Goals />
+      <Divider />
+      <div className="grid grid-flow-col content-end">
+        <Goals />
+        <Chat className="col-span-2 bg-blue-300" />
+      </div>
       <Link href="/home">Home</Link>
     </>
   );
