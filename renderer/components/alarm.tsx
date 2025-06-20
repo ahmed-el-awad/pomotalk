@@ -5,7 +5,7 @@ import styles from "./alarm.module.css";
 import { addSeconds, differenceInSeconds, format, subSeconds } from "date-fns";
 import { Button } from "@heroui/button";
 
-export default function AlarmPage() {
+export default function Alarm() {
   const [countdownTimer, setCountdownTimer] = useState<string | null>(null);
   const [minutesInput, setMinutesInput] = useState<number>(0);
   const [endingTimeDOM, setEndingTimeDOM] = useState<string | null>(null);
