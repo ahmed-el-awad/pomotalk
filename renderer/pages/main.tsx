@@ -41,7 +41,7 @@ export default function Main() {
       <Divider />
       <div className="grid grid-flow-col content-end">
         <Goals />
-        <Chat className="col-span-2 bg-blue-300" />
+        <Chat />
       </div>
       <Link href="/home">Home</Link>
     </>
