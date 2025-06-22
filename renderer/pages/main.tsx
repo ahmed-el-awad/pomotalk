@@ -38,7 +38,7 @@ export default function Main() {
         </AvatarGroup>
       </header>
       <Divider />
-      <div className="grid grid-flow-col content-end">
+      <div className="grid grid-flow-col content-end *:min-w-0">
         <Goals />
         <Chat />
       </div>
