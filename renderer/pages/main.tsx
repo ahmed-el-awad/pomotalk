@@ -1,5 +1,4 @@
-import { Avatar, AvatarGroup, Divider } from "@heroui/react";
-import Link from "next/link";
+import { Avatar, AvatarGroup, Button, Divider, Link } from "@heroui/react";
 import React from "react";
 import Goals from "../components/goals";
 import Chat from "../components/chat";
