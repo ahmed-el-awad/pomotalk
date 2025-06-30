@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "server": "npx tsx watch server.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.20.3"
+  }
+}
