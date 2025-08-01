@@ -2,7 +2,6 @@ import { Avatar, AvatarGroup, Button, Divider, Link } from "@heroui/react";
 import React from "react";
 import Goals from "../components/goals";
 import Chat from "../components/chat";
-import Alarm from "../components/alarm";
 
 type Colors =
   | "default"
@@ -21,37 +20,10 @@ const avatarColors: Colors[] = [
   "danger",
 ];
 
-const HomeIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="size-5"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-      />
-    </svg>
-  );
-};
 export default function Main() {
   return (
     <>
-      <header className="flex items-center p-2">
-        <Link href="/home">
-          <Button
-            isIconOnly
-            startContent={<HomeIcon />}
-            size="sm"
-            radius="full"
-          ></Button>
-        </Link>
-        <Alarm />
+      <header className="bg-0 flex h-full items-center p-2">
         <h1 className="mr-20">People</h1>
         <AvatarGroup
           className="flex *:cursor-default"
@@ -70,6 +42,7 @@ export default function Main() {
         <Goals />
         <Chat />
       </div>
+      <Link href="/home">Home</Link>
     </>
   );
 }
