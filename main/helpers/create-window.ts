@@ -73,6 +73,10 @@ export const createWindow = (
   const win = new BrowserWindow({
     ...state,
     ...options,
+    fullscreenable: true,
+    width: 1200,
+    minWidth: 1200,
+    minHeight: 800,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
