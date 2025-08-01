@@ -1,5 +1,6 @@
 import { Button } from "@heroui/react";
 import Tasks from "./tasks";
+import { useState } from "react";
 
 const EditIcon = () => {
   return (
@@ -20,6 +21,8 @@ const EditIcon = () => {
   );
 };
 export default function Kanban() {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+
   return (
     <>
       <div className="child flex flex-col items-center bg-gray-200 px-4">
@@ -32,9 +35,11 @@ export default function Kanban() {
             size="sm"
             startContent={<EditIcon />}
             className=""
+            onPress={() => setIsEditing(!isEditing)}
           />
+          {/* {isEditing && "hello"} */}
         </div>
-        <Tasks />
+        <Tasks isEditing={isEditing} />
       </div>
     </>
   );
