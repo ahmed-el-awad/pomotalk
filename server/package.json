@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "server": "npx tsx watch server.ts"
+    "server": "tsx watch server.ts"
   },
   "dependencies": {
     "express": "^5.1.0",
