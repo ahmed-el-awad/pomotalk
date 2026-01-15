@@ -1,5 +1,4 @@
 import WebSocket, { WebSocketServer } from "ws";
-import express from "express";
 import http from "http";
 import { randomUUID } from "crypto";
 
@@ -9,8 +8,7 @@ interface ChatMessage {
 }
 
 const port = 8080;
-const app = express();
-const server = http.createServer(app);
+const server = http.createServer();
 const wss = new WebSocketServer({ server });
 
 const clients = new Map<string, WebSocket>();
