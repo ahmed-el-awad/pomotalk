@@ -1,38 +1,39 @@
-<p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
+## About 
+Pomotalk is a pomodoro based collaborative task management desktop application, made for friends who would like to be productive together :)
 
-## Usage
+This project is currently a **Work in Progress** and development on it is slow. But it is nice to come back to work on it every now and then when I feel like it.
 
-### Create an App
+The application is currently built on top of 
+- Nextron (Next.js + Electron)
+- Websockets (ws)
 
-```
-# with npx
-$ npx create-nextron-app my-app --example with-tailwindcss
+## Installation
 
-# with yarn
-$ yarn create nextron-app my-app --example with-tailwindcss
-
-# with pnpm
-$ pnpm dlx create-nextron-app my-app --example with-tailwindcss
-```
-
-### Install Dependencies
+The project uses [yarn](https://yarnpkg.com/) as the package manager, if you use a different package manager you may run into problems with running the application.
 
 ```
-$ cd my-app
+git clone https://github.com/ahmed-el-awad/pomotalk
 
-# using yarn or npm
-$ yarn (or `npm install`)
+cd pomotalk 
 
-# using pnpm
-$ pnpm install --shamefully-hoist
+yarn install
 ```
 
-### Use it
+### Running the App
 
+You have two parts of the application, the client and the server.
+You need to run both on separate terminals for this to work properly.
+
+To run the client, at the root directory run
 ```
-# development mode
-$ yarn dev (or `npm run dev` or `pnpm run dev`)
+yarn run dev
+```
 
-# production build
-$ yarn build (or `npm run build` or `pnpm run build`)
+And to run the server, from the root directory run
+```
+cd server
+
+yarn install
+
+yarn run server
 ```
