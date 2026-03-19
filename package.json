@@ -5,6 +5,9 @@
   "version": "1.0.0",
   "main": "app/background.js",
   "scripts": {
+    "client-1": "nextron --renderer-port 7271",
+    "client-2": "nextron --renderer-port 7272",
+    "client-3": "nextron --renderer-port 7273",
     "dev": "nextron",
     "build": "nextron build",
     "postinstall": "electron-builder install-app-deps"
