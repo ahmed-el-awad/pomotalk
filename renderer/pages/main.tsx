@@ -39,6 +39,7 @@ const HomeIcon = () => {
     </svg>
   );
 };
+
 export default function Main() {
   return (
     <>
@@ -52,18 +53,20 @@ export default function Main() {
           ></Button>
         </Link>
         <Alarm />
-        <h1 className="mr-20">People</h1>
-        <AvatarGroup
-          className="flex *:cursor-default"
-          size="sm"
-          max={3}
-          isBordered
-        >
-          <Avatar name="Ahmed" color={avatarColors[1]}></Avatar>
-          <Avatar color={avatarColors[2]}></Avatar>
-          <Avatar color={avatarColors[3]}></Avatar>
-          <Avatar color={avatarColors[4]}></Avatar>
-        </AvatarGroup>
+        <div className="flex items-center rounded-2xl bg-slate-200 p-2">
+          <h1 className="mr-20">People</h1>
+          <AvatarGroup
+            className="flex *:cursor-default"
+            size="sm"
+            max={3}
+            isBordered
+          >
+            <Avatar name="Ahmed" color={avatarColors[1]}></Avatar>
+            <Avatar color={avatarColors[2]}></Avatar>
+            <Avatar color={avatarColors[3]}></Avatar>
+            <Avatar color={avatarColors[4]}></Avatar>
+          </AvatarGroup>
+        </div>
       </header>
       <Divider />
       <div className="grid grid-flow-col content-end *:min-w-0">

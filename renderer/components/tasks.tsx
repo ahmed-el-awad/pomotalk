@@ -7,10 +7,10 @@ interface Props {
 }
 
 export default function Tasks({ isEditing }: Props) {
-  const [tasks, setTasks] = useState<string[]>([
-    "Read 5 pages",
-    "Read 10 pages",
-    "Read 20 pages",
+  const [tasks, setTasks] = useState<TaskItem[]>([
+    { id: 1, text: "Read 5 pages" },
+    { id: 2, text: "Read 10 pages" },
+    { id: 3, text: "Read 20 pages" },
   ]);
 
   return (
@@ -18,14 +18,25 @@ export default function Tasks({ isEditing }: Props) {
       <div className="flex flex-col bg-blue-300 p-2">
         {isEditing ? (
           <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
-            {tasks.map((task) => (
-              <Task task={task} key={task} isEditing={isEditing} />
+            {tasks.map((task, index) => (
+              <Task
+                task={task}
+                key={task.id}
+                index={index}
+                isEditing={isEditing}
+                setTasks={setTasks}
+              />
             ))}
           </Reorder.Group>
         ) : (
           <div>
-            {tasks.map((task) => (
-              <Task task={task} key={task} isEditing={isEditing} />
+            {tasks.map((task, index) => (
+              <Task
+                task={task}
+                key={task.id}
+                isEditing={isEditing}
+                index={index}
+              />
             ))}
           </div>
         )}

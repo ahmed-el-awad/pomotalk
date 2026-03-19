@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { differenceInSeconds, format } from "date-fns";
-import { Button } from "@heroui/button";
+import { Button } from "@heroui/react";
 
 export default function Alarm() {
   const [countdownTimer, setCountdownTimer] = useState<string | null>(null);
@@ -90,21 +90,29 @@ export default function Alarm() {
       <Head>
         <title>Alarm</title>
       </Head>
-      <div className="grid-col-1 grid w-full text-center text-2xl">
-        <div id="center-clock">
-          <div id="container">
-            <input
-              id="minutes"
-              type="number"
-              max="59"
-              min="0"
-              placeholder="0"
-              value={minutesInput}
-              onChange={({ target: { value } }) =>
-                setMinutesInput(Number(value))
-              }
-            />
-          </div>
+      <div className="flex flex-col text-center text-2xl">
+        <div id="center-clock" className="flex *:m-4 *:bg-red-400">
+          <h1>Pomodoro</h1>
+          <input
+            id="minutes"
+            type="number"
+            max="59"
+            min="0"
+            placeholder="0"
+            value={minutesInput}
+            onChange={({ target: { value } }) => setMinutesInput(Number(value))}
+          />
+
+          <h1>Break</h1>
+          <input
+            type="number"
+            max="59"
+            min="0"
+            placeholder="0"
+            value={minutesInput}
+            onChange={({ target: { value } }) => setMinutesInput(Number(value))}
+          />
+
           <Button
             color="primary"
             id="startBtn"
@@ -113,8 +121,10 @@ export default function Alarm() {
             Start
           </Button>
 
-          <p id="time">{endingTimeDOM}</p>
-          <p>{countdownTimer}</p>
+          <div>
+            <p>{countdownTimer}</p>
+            <p id="time">{endingTimeDOM}</p>
+          </div>
         </div>
       </div>
     </React.Fragment>
