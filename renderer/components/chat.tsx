@@ -59,7 +59,7 @@ export default function Chat() {
         {chatMessages.map((messageInfo, idx) => {
           return (
             <div key={idx} className="mx-4 bg-red-400 px-4">
-              {messageInfo.message}
+              {messageInfo.name}: {messageInfo.message}
             </div>
           );
         })}
