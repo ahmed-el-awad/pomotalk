@@ -22,6 +22,7 @@ const EditIcon = () => {
 };
 export default function Kanban() {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [taskName, setTaskName] = useState<string | null>(null)
 
   return (
     <>
@@ -37,7 +38,6 @@ export default function Kanban() {
             className=""
             onPress={() => setIsEditing(!isEditing)}
           />
-          {/* {isEditing && "hello"} */}
         </div>
         <Tasks isEditing={isEditing} />
       </div>

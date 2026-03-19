@@ -1,12 +1,7 @@
 import { Checkbox, divider } from "@heroui/react";
 import { Reorder, useDragControls } from "framer-motion";
 
-interface TaskProps {
-  task: string;
-  isEditing?: boolean;
-}
-
-export default function Task({ task, isEditing }: TaskProps) {
+export default function Task({ task, isEditing, setTasks, index }: TaskProps) {
   const dragControls = useDragControls();
 
   return (
@@ -17,13 +12,19 @@ export default function Task({ task, isEditing }: TaskProps) {
             value={task}
             dragListener={false}
             dragControls={dragControls}
-            className="flex justify-between bg-white"
+            className="flex items-center justify-between bg-white"
           >
-            <div className="">
-              <Checkbox lineThrough disableAnimation>
-                <span className="text-lg">{task}</span>
-              </Checkbox>
-            </div>
+            <input
+              className="w-full"
+              value={task.text}
+              onChange={(e) =>
+                setTasks((prev: TaskItem[]) =>
+                  prev.map((t, i) =>
+                    i === index ? { ...t, text: e.target.value } : t
+                  )
+                )
+              }
+            />
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +32,7 @@ export default function Task({ task, isEditing }: TaskProps) {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="reorder-handle ml-4 size-6 cursor-pointer bg-red-400"
+              className="reorder-handle ml-4 size-6 h-full cursor-pointer bg-red-400"
               onPointerDown={(e) => dragControls.start(e)}
             >
               <path
@@ -43,7 +44,7 @@ export default function Task({ task, isEditing }: TaskProps) {
           </Reorder.Item>
         ) : (
           <div className="flex justify-between bg-white">
-            <span className="text-md">{task}</span>
+            <span className="text-md">{task.text}</span>
           </div>
         )}
       </div>
