@@ -109,14 +109,6 @@ export default function Alarm() {
           />
 
           <h1>Break</h1>
-          <input
-            type="number"
-            max="59"
-            min="0"
-            placeholder="0"
-            value={minutesInput}
-            onChange={({ target: { value } }) => setMinutesInput(Number(value))}
-          />
 
           <Button
             color="primary"
