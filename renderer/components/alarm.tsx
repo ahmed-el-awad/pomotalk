@@ -21,7 +21,12 @@ export default function Alarm() {
       return;
     }
 
-    console.log("time diff in seconds:", timeDiffInSeconds);
+    console.log("DEBUG: time diff in seconds:", timeDiffInSeconds);
+
+    // TODO: if the person is a host, let the host's client send a
+    // message to the ws server of the time to count down from.
+    // that would be broadcasted to every connected client so each of
+    // the clients would count down on their own
 
     const interval = setInterval(() => {
       setCountdownTimer(
