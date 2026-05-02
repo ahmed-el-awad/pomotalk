@@ -12,10 +12,10 @@ export default function Task({ task, isEditing, setTasks, index }: TaskProps) {
             value={task}
             dragListener={false}
             dragControls={dragControls}
-            className="flex items-center justify-between bg-white"
+            className="bg-temp-4 flex items-center justify-between rounded-md rounded-bl-none rounded-tl-none p-2"
           >
             <input
-              className="w-full"
+              className="bg-temp-4 w-full"
               value={task.text}
               onChange={(e) =>
                 setTasks((prev: TaskItem[]) =>
@@ -43,8 +43,8 @@ export default function Task({ task, isEditing, setTasks, index }: TaskProps) {
             </svg>
           </Reorder.Item>
         ) : (
-          <div className="flex justify-between bg-white">
-            <span className="text-md">{task.text}</span>
+          <div className="bg-temp-1 flex justify-between rounded-md rounded-bl-none rounded-tl-none p-2">
+            <span className="text-md bg-temp-1">{task.text}</span>
           </div>
         )}
       </div>
