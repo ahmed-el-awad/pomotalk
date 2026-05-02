@@ -11,11 +11,12 @@ export default function Tasks({ isEditing }: Props) {
     { id: 1, text: "Read 5 pages" },
     { id: 2, text: "Read 10 pages" },
     { id: 3, text: "Read 20 pages" },
+    { id: 3, text: "Read 50 pages" },
   ]);
 
   return (
     <>
-      <div className="flex flex-col bg-blue-300 p-2">
+      <div className="bg-temp-3 flex flex-col rounded-md rounded-bl-none rounded-tl-none p-2 pl-0">
         {isEditing ? (
           <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
             {tasks.map((task, index) => (
