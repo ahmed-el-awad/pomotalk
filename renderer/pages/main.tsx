@@ -42,37 +42,44 @@ const BackButton = () => {
 
 export default function Main() {
   return (
-    <>
-      <header className="flex items-center p-2">
-        <Link href="/home">
-          <Button
-            isIconOnly
+    <div className="grid grid-cols-10">
+      {/*
+      TODO: 
+      content between doesn't work, shows this 
+      The flex-wrap: nowrap property prevents align-content from having an effect.
+      Try setting flex-wrap to something other than nowrap.
+    */}
+      <div className="leftSide bg-temp-4 col-span-8 rounded-xl p-3">
+        <header className="bg-temp-5 flex content-end justify-between rounded-full p-2">
+          <section className="flex">
+            <Link href="/home">
+              <Button
+                isIconOnly
                 startContent={<BackButton />}
-            size="sm"
-            radius="full"
-          ></Button>
-        </Link>
-        <Alarm />
-        <div className="flex items-center rounded-2xl bg-slate-200 p-2">
-          <h1 className="mr-20">People</h1>
-          <AvatarGroup
-            className="flex *:cursor-default"
-            size="sm"
-            max={3}
-            isBordered
-          >
-            <Avatar name="Ahmed" color={avatarColors[1]}></Avatar>
-            <Avatar color={avatarColors[2]}></Avatar>
-            <Avatar color={avatarColors[3]}></Avatar>
-            <Avatar color={avatarColors[4]}></Avatar>
-          </AvatarGroup>
+                size="sm"
+                radius="full"
+                className="bg-temp-3"
+              ></Button>
+            </Link>
+            <p className="bg-temp-3 ml-3 mr-3 rounded-full p-2 px-3 text-center">
+              Host Name's Room
+            </p>
+          </section>
+          <div className="bg-temp-3 flex items-center rounded-full p-1 px-4">
+            <AvatarGroup className="flex *:cursor-default" size="sm" max={3}>
+              <Avatar disableAnimation color={avatarColors[2]}></Avatar>
+              <Avatar disableAnimation color={avatarColors[3]}></Avatar>
+              <Avatar disableAnimation color={avatarColors[4]}></Avatar>
+            </AvatarGroup>
+          </div>
+        </header>
+        <div className="">
+          <Goals />
         </div>
-      </header>
-      <Divider />
-      <div className="grid grid-flow-col content-end *:min-w-0">
-        <Goals />
+      </div>
+      <div className="rightSide col-span-2">
         <Chat />
       </div>
-    </>
+    </div>
   );
 }
