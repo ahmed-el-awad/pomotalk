@@ -53,24 +53,41 @@ export default function Chat() {
   };
 
   return (
-    <div className="col-span-2 flex flex-col justify-between bg-blue-300">
-      <h1 className="ml-2 mt-2 text-xl font-bold">Chat</h1>
-      <div>
+    <div className="ml-2 flex flex-col justify-between">
+      {/* Chat messages */}
+      <div className="h-[80vh] overflow-y-scroll">
         {chatMessages.map((messageInfo, idx) => {
           return (
-            <div key={idx} className="mx-4 bg-red-400 px-4">
-              {messageInfo.name}: {messageInfo.message}
+            <div key={idx} className="mb-2 px-2">
+              <p className="bg-temp-3 mb-1 w-fit rounded-md rounded-bl-none px-3 pb-1">
+                {messageInfo.name}
+              </p>
+              <p className="bg-temp-3 min-h-16 rounded-md rounded-tl-none p-1 px-1">
+                {messageInfo.message}
+              </p>
             </div>
           );
         })}
       </div>
-      <Form onSubmit={onSubmit} className="flex flex-row items-center">
+
+      {/* Bottom part */}
+      <Form onSubmit={onSubmit} className="mt-1 flex flex-col">
         <Textarea
           name="message"
-          placeholder="Message"
+          placeholder="Send a message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="mb-2 h-20 p-2 pr-0"
+          onKeyDown={(e) => {
+            if (e.target.value && e.keyCode == 13) {
+              return onSubmit(e);
+            } else if (e.target.value.includes("\n")) {
+              console.log("val", e.target.value);
+              return null;
+            }
+          }}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+          className="h-20"
           maxRows={3}
         />
         <Button type="submit">Send</Button>
