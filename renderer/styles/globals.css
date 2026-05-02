@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  background-color: #64748b;
+}
+
 body {
   user-select: none;
 
