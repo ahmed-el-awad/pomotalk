@@ -21,7 +21,7 @@ const avatarColors: Colors[] = [
   "danger",
 ];
 
-const HomeIcon = () => {
+const BackButton = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ export default function Main() {
         <Link href="/home">
           <Button
             isIconOnly
-            startContent={<HomeIcon />}
+                startContent={<BackButton />}
             size="sm"
             radius="full"
           ></Button>
