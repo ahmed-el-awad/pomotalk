@@ -7,7 +7,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <HeroUIProvider className="m-2 h-[97vh] rounded-xl bg-slate-400 p-4">
+    <HeroUIProvider className="h[100vh] p-2">
       <Component {...pageProps} />
     </HeroUIProvider>
   );
