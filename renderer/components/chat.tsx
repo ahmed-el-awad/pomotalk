@@ -55,7 +55,7 @@ export default function Chat() {
   return (
     <div className="ml-2 flex flex-col justify-between">
       {/* Chat messages */}
-      <div className="h-[80vh] overflow-y-scroll">
+      <div className="flex h-[80vh] flex-col-reverse overflow-y-scroll">
         {chatMessages.map((messageInfo, idx) => {
           return (
             <div key={idx} className="mb-2 px-2">

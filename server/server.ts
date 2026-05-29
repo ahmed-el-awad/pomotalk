@@ -26,7 +26,7 @@ wss.on("connection", (ws: WebSocket) => {
     message = message.toString();
     console.log(`Received: ${message} sent by ${clientID}`);
 
-    messageList.push({
+    messageList.unshift({
       name: clientID,
       message: message,
     });
