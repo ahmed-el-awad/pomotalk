@@ -11,6 +11,18 @@ export default function Chat() {
   const [message, setMessage] = useState("");
   const socketRef = useRef<WebSocket | null>(null);
 
+  const scrollToBottom = () => {
+    const chatMessagesContainer = document.getElementById(
+      "chat-messages-container"
+    );
+
+    if (chatMessagesContainer) {
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    } else {
+      console.error("chatMessagesContainer is null");
+    }
+  };
+
   useEffect(() => {
     socketRef.current = new WebSocket("ws://localhost:8080");
 
@@ -23,6 +35,7 @@ export default function Chat() {
       console.log("Message from server:", newMessagesFromServer);
 
       setChatMessages(newMessagesFromServer);
+      scrollToBottom();
     };
 
     socketRef.current.onclose = () => {
@@ -55,7 +68,10 @@ export default function Chat() {
   return (
     <div className="ml-2 flex flex-col justify-between">
       {/* Chat messages */}
-      <div className="flex h-[80vh] flex-col-reverse overflow-y-scroll">
+      <div
+        id="chat-messages-container"
+        className="flex h-[80vh] flex-col-reverse overflow-y-auto"
+      >
         {chatMessages.map((messageInfo, idx) => {
           return (
             <div key={idx} className="mb-2 px-2">
