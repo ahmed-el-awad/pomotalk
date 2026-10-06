@@ -106,7 +106,14 @@ export default function Chat() {
           className="h-20"
           maxRows={3}
         />
-        <Button type="submit">Send</Button>
+        <Button
+          disableRipple
+          disabled={isMessageEmpty}
+          type="submit"
+          className={`${isMessageEmpty ? "disabled:cursor-not-allowed" : ""}`}
+        >
+          Send
+        </Button>
       </Form>
     </div>
   );

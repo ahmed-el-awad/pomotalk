@@ -39,6 +39,7 @@ export default function Kanban() {
         <Button
           isIconOnly
           size="sm"
+          disableRipple
           startContent={<EditIcon />}
           className="rounded-full p-1"
           onPress={() => setIsEditing(!isEditing)}

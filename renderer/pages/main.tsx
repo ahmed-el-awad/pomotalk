@@ -55,6 +55,7 @@ export default function Main() {
             <Link href="/home">
               <Button
                 isIconOnly
+                disableRipple
                 startContent={<BackButton />}
                 size="sm"
                 radius="full"
