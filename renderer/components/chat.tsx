@@ -9,6 +9,7 @@ interface ChatMessage {
 export default function Chat() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [message, setMessage] = useState("");
+  const isMessageEmpty = message.trim().length === 0;
   const socketRef = useRef<WebSocket | null>(null);
 
   const scrollToBottom = () => {
@@ -49,8 +50,10 @@ export default function Chat() {
     e.preventDefault();
 
     if (socketRef.current?.readyState === WebSocket.OPEN) {
-      socketRef.current.send(message);
-      console.log("sent message", message);
+      if (!isMessageEmpty) {
+        socketRef.current.send(message);
+        console.log("sent message", message);
+      }
 
       setMessage("");
     } else {
@@ -106,12 +109,7 @@ export default function Chat() {
           className="h-20"
           maxRows={3}
         />
-        <Button
-          disableRipple
-          disabled={isMessageEmpty}
-          type="submit"
-          className={`${isMessageEmpty ? "disabled:cursor-not-allowed" : ""}`}
-        >
+        <Button disableRipple type="submit">
           Send
         </Button>
       </Form>
