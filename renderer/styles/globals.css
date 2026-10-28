@@ -4,6 +4,7 @@
 
 :root {
   background-color: #64748b;
+  scrollbar-width: none;
 }
 
 body {
