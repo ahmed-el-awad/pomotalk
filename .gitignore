@@ -10,5 +10,5 @@ next-env.d.ts
 
 # build
 /app
-dist
+/dist
 .vscode/settings.json
