@@ -9,14 +9,14 @@ The application is currently built on top of
 
 ## Installation
 
-The project uses [yarn](https://yarnpkg.com/) as the package manager, if you use a different package manager you may run into problems with running the application.
+The project uses [pnpm](https://pnpm.io/) as the package manager, if you use a different package manager you may run into problems with running the application.
 
 ```
 git clone https://github.com/ahmed-el-awad/pomotalk
 
 cd pomotalk 
 
-yarn install
+pnpm install
 ```
 
 ### Running the App
@@ -26,14 +26,14 @@ You need to run both on separate terminals for this to work properly.
 
 To run the client, at the root directory run
 ```
-yarn run dev
+pnpm run dev
 ```
 
 And to run the server, from the root directory run
 ```
 cd server
 
-yarn install
+pnpm install
 
-yarn run server
+pnpm run server
 ```
