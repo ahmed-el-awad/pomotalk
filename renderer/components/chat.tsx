@@ -37,7 +37,7 @@ export default function Chat() {
     };
 
     socketRef.current.onclose = () => {
-      console.error("WebSocket connection was lost");
+      console.warn("Client disconnected");
     };
 
     return () => socketRef.current.close();
