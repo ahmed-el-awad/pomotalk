@@ -35,8 +35,13 @@ export default function Main() {
             </AvatarGroup>
           </div>
         </header>
-        <div className="">
-          <Goals />
+        <div className="flex flex-col">
+          <div>
+            <Goals />
+          </div>
+          {/* <div className="mt-auto">
+            <Alarm />
+          </div> */}
         </div>
       </div>
       <div className="rightSide col-span-2">

@@ -13,7 +13,7 @@ export default function Kanban() {
     */
   }
   return (
-    <div className="flex h-72 flex-col items-start px-4">
+    <div className="flex flex-col items-start px-4">
       <div className="flex w-full items-center justify-between">
         <h1 className="bg-temp-4 rounded-tr-lg p-2 px-4 text-lg font-bold">
           {"Person\u00A0Name"}
