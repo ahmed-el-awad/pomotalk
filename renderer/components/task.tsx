@@ -1,4 +1,3 @@
-import { Checkbox, divider } from "@heroui/react";
 import { Reorder, useDragControls } from "framer-motion";
 
 export default function Task({ task, isEditing, setTasks, index }: TaskProps) {

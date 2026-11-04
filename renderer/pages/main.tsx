@@ -1,25 +1,10 @@
-import { Avatar, AvatarGroup, Button, Divider, Link } from "@heroui/react";
-import React from "react";
 import Goals from "../components/goals";
 import Chat from "../components/chat";
 import Alarm from "../components/alarm";
-
-type Colors =
-  | "default"
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger";
-
-const avatarColors: Colors[] = [
-  "default",
-  "primary",
-  "secondary",
-  "success",
-  "warning",
-  "danger",
-];
+import Link from "next/link";
+import { Button } from "../components/ui/button";
+import { BackIcon } from "../components/icons/BackIcon";
+import { Avatar, AvatarGroup } from "../components/ui/avatar";
 
 export default function Main() {
   return (
@@ -34,24 +19,19 @@ export default function Main() {
         <header className="bg-temp-5 flex content-end justify-between rounded-full p-2">
           <section className="flex">
             <Link href="/home">
-              <Button
-                isIconOnly
-                disableRipple
-                startContent={<BackButton />}
-                size="sm"
-                radius="full"
-                className="bg-temp-3"
-              ></Button>
+              <Button className="bg-temp-3">
+                <BackIcon />
+              </Button>
             </Link>
-            <p className="bg-temp-3 ml-3 mr-3 rounded-full p-2 px-3 text-center">
+            <p className="bg-temp-3 mr-3 ml-3 rounded-full p-2 px-3 text-center">
               Host Name's Room
             </p>
           </section>
           <div className="bg-temp-3 flex items-center rounded-full p-1 px-4">
-            <AvatarGroup className="flex *:cursor-default" size="sm" max={3}>
-              <Avatar disableAnimation color={avatarColors[2]}></Avatar>
-              <Avatar disableAnimation color={avatarColors[3]}></Avatar>
-              <Avatar disableAnimation color={avatarColors[4]}></Avatar>
+            <AvatarGroup className="flex *:cursor-default">
+              <Avatar></Avatar>
+              <Avatar></Avatar>
+              <Avatar></Avatar>
             </AvatarGroup>
           </div>
         </header>

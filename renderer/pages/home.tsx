@@ -12,7 +12,8 @@ export default function HomePage() {
       <div className="grid-col-1 grid w-full text-center text-2xl">
         <div>
           <Image
-            className="ml-auto mr-auto"
+            priority
+            className="mr-auto ml-auto"
             src="/images/logo.png"
             alt="Logo image"
             width={256}

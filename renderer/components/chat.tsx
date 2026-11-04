@@ -1,5 +1,6 @@
-import { Button, Form, Textarea } from "@heroui/react";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 
 interface ChatMessage {
   name: string;
@@ -90,7 +91,7 @@ export default function Chat() {
       </div>
 
       {/* Bottom part */}
-      <Form onSubmit={onSubmit} className="mt-1 flex flex-col">
+      <form onSubmit={onSubmit} className="mt-1 flex flex-col">
         <Textarea
           name="message"
           placeholder="Send a message"
@@ -107,12 +108,9 @@ export default function Chat() {
             setMessage(e.target.value);
           }}
           className="h-20"
-          maxRows={3}
         />
-        <Button disableRipple type="submit">
-          Send
-        </Button>
-      </Form>
+        <Button type="submit">Send</Button>
+      </form>
     </div>
   );
 }

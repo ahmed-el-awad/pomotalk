@@ -1,4 +1,3 @@
-import { Button } from "@heroui/react";
 import Tasks from "./tasks";
 import { useState } from "react";
 
@@ -18,13 +17,12 @@ export default function Kanban() {
           {"Person\u00A0Name"}
         </h1>
         <Button
-          isIconOnly
           size="sm"
-          disableRipple
-          startContent={<EditIcon />}
           className="rounded-full p-1"
-          onPress={() => setIsEditing(!isEditing)}
-        />
+          onClick={() => setIsEditing(!isEditing)}
+        >
+          <EditIcon />
+        </Button>
       </div>
       <div className="">
         <div className="col-span-2 flex w-full items-center justify-between">
