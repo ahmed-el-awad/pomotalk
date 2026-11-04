@@ -1,5 +1,7 @@
 import Tasks from "./tasks";
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { EditIcon } from "./icons/EditIcon";
 
 export default function Kanban() {
   const [isEditing, setIsEditing] = useState<boolean>(false);
