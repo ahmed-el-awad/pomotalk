@@ -1,11 +1,7 @@
 import WebSocket, { WebSocketServer } from "ws";
 import http from "http";
 import { randomUUID } from "crypto";
-
-interface ChatMessage {
-  name: string;
-  message: string;
-}
+import { ChatMessage } from "@/server/types/chat";
 
 const port = 8080;
 const server = http.createServer();

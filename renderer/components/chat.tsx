@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-
-interface ChatMessage {
-  name: string;
-  message: string;
-}
+import { ChatMessage } from "@/server/types/chat";
 
 export default function Chat() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
