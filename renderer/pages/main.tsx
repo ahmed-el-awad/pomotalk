@@ -9,12 +9,6 @@ import { Avatar, AvatarGroup } from "../components/ui/avatar";
 export default function Main() {
   return (
     <div className="grid grid-cols-10">
-      {/*
-      TODO: 
-      content between doesn't work, shows this 
-      The flex-wrap: nowrap property prevents align-content from having an effect.
-      Try setting flex-wrap to something other than nowrap.
-    */}
       <div className="leftSide bg-temp-4 col-span-8 rounded-xl p-3">
         <header className="bg-temp-5 flex content-end justify-between rounded-full p-2">
           <section className="flex">
