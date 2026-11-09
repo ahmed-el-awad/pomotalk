@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { ChatMessage } from "@/server/types/chat";
+import { SettingsIcon } from "./icons/SettingsIcon";
 
 export default function Chat() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -105,7 +106,15 @@ export default function Chat() {
           }}
           className="h-20"
         />
-        <Button type="submit">Send</Button>
+        <div className="grid grid-cols-2 items-center pt-2">
+          <Button size="icon-lg" variant="ghost">
+            {/* TODO: Open up a modal for the settings */}
+            <SettingsIcon />
+          </Button>
+          <Button className="w-fit place-self-end" type="submit">
+            Send
+          </Button>
+        </div>
       </form>
     </div>
   );
