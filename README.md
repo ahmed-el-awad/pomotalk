@@ -1,9 +1,11 @@
-## About 
+## About
+
 Pomotalk is a pomodoro based collaborative task management desktop application, made for friends who would like to be productive together :)
 
 This project is currently a **Work in Progress** and development on it is slow. But it is nice to come back to work on it every now and then when I feel like it.
 
-The application is currently built on top of 
+The application is currently built on top of
+
 - Nextron (Next.js + Electron)
 - Websockets (ws)
 
@@ -14,7 +16,7 @@ The project uses [pnpm](https://pnpm.io/) as the package manager, if you use a d
 ```
 git clone https://github.com/ahmed-el-awad/pomotalk
 
-cd pomotalk 
+cd pomotalk
 
 pnpm install
 ```
@@ -25,11 +27,13 @@ You have two parts of the application, the client and the server.
 You need to run both on separate terminals for this to work properly.
 
 To run the client, at the root directory run
+
 ```
 pnpm run dev
 ```
 
 And to run the server, from the root directory run
+
 ```
 cd server
 
