@@ -10,6 +10,7 @@
     "client-1": "nextron --renderer-port 7271",
     "client-2": "nextron --renderer-port 7272",
     "client-3": "nextron --renderer-port 7273",
+    "format": "pnpm exec prettier . --write",
     "dev": "nextron",
     "build": "nextron build",
     "postinstall": "electron-builder install-app-deps"
