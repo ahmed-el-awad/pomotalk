@@ -16,7 +16,7 @@ export default function Tasks({ isEditing }: Props) {
 
   return (
     <>
-      <div className="bg-temp-3 scrollbar-hide flex h-[28rem] flex-col overflow-y-auto rounded-md rounded-b-none rounded-tl-none p-2 pl-0">
+      <div className="bg-temp-3 flex h-112 scrollbar-none flex-col overflow-y-auto rounded-md rounded-tl-none rounded-b-none p-2 pl-0">
         {isEditing ? (
           <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
             {tasks.map((task, index) => (

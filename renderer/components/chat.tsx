@@ -71,7 +71,7 @@ export default function Chat() {
       {/* Chat messages */}
       <div
         id="chat-messages-container"
-        className="flex h-[80vh] flex-col-reverse overflow-y-auto"
+        className="scrollbar-thumb-temp-3 flex h-[80vh] flex-col-reverse overflow-y-auto"
       >
         {chatMessages.map((messageInfo, idx) => {
           return (
