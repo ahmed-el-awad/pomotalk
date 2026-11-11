@@ -11,10 +11,10 @@ export default function Task({ task, isEditing, setTasks, index }: TaskProps) {
             value={task}
             dragListener={false}
             dragControls={dragControls}
-            className="bg-temp-4 flex items-center justify-between rounded-md rounded-bl-none rounded-tl-none p-2"
+            className="bg-temp-4 flex items-center justify-between rounded-md rounded-tl-none rounded-bl-none p-2"
           >
             <input
-              className="bg-temp-4 w-full"
+              className="bg-temp-4 focus:outline-temp-1 w-full focus:outline-offset-3"
               value={task.text}
               onChange={(e) =>
                 setTasks((prev: TaskItem[]) =>
@@ -42,7 +42,7 @@ export default function Task({ task, isEditing, setTasks, index }: TaskProps) {
             </svg>
           </Reorder.Item>
         ) : (
-          <div className="bg-temp-1 flex justify-between rounded-md rounded-bl-none rounded-tl-none p-2">
+          <div className="bg-temp-1 flex justify-between rounded-md rounded-tl-none rounded-bl-none p-2">
             <span className="text-md bg-temp-1">{task.text}</span>
           </div>
         )}

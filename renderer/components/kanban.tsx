@@ -19,7 +19,6 @@ export default function Kanban() {
           {"Person\u00A0Name"}
         </h1>
         <Button
-          size="sm"
           className="rounded-full p-1"
           onClick={() => setIsEditing(!isEditing)}
         >

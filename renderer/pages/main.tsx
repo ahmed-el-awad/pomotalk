@@ -8,7 +8,7 @@ export default function Main() {
     <div className="grid grid-cols-10">
       <div className="leftSide bg-temp-4 col-span-8 rounded-xl p-3">
         <Header />
-        <div className="flex flex-col">
+        <div className="flex flex-col content-around">
           <div>
             <Goals />
           </div>
