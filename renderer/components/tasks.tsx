@@ -1,4 +1,4 @@
-import { Reorder, useDragControls } from "framer-motion";
+import { Reorder } from "framer-motion";
 import Task from "./task";
 import { useState } from "react";
 
@@ -11,11 +11,12 @@ export default function Tasks({ isEditing }: Props) {
     { id: 1, text: "Read 5 pages" },
     { id: 2, text: "Read 10 pages" },
     { id: 3, text: "Read 20 pages" },
+    { id: 4, text: "Read 50 pages" },
   ]);
 
   return (
     <>
-      <div className="flex flex-col bg-blue-300 p-2">
+      <div className="bg-temp-3 flex h-112 scrollbar-none flex-col overflow-y-auto rounded-md rounded-tl-none rounded-b-none p-2 pl-0">
         {isEditing ? (
           <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
             {tasks.map((task, index) => (

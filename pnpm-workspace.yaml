@@ -1,3 +1,2 @@
 allowBuilds:
-  '@heroui/shared-utils': true
   electron-winstaller: true

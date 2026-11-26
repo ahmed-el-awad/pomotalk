@@ -82,6 +82,41 @@ export function makeSecondsZero(event: FocusEvent<HTMLInputElement, Element>) {
   }
 }
 
+export function convertSecondsToMinutes(seconds: number): string {
+  if (seconds > 3599) {
+    return "59:59";
+  }
+
+  const mm = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const ss = (seconds % 60).toString().padStart(2, "0");
+
+  return `${mm}:${ss}`;
+}
+
+export function decrementCounter(timer: string): string {
+  let [mins, secs] = timer.split(":").map((str) => parseInt(str));
+
+  if (mins === 0 && secs === 0) {
+    return `time's up!`;
+  }
+
+  if (secs === 0) {
+    if (mins > 0) {
+      mins -= 1;
+      secs = 59;
+    }
+  } else {
+    secs -= 1;
+  }
+
+  const paddedMins = mins.toString().padStart(2, "0");
+  const paddedSecs = secs.toString().padStart(2, "0");
+
+  return `${paddedMins}:${paddedSecs}`;
+}
+
 (window as any).validateMinutesTime = validateMinutesTime;
 (window as any).validateSecondsTime = validateSecondsTime;
 (window as any).makeMinutesZero = makeMinutesZero;

@@ -1,15 +1,26 @@
-import { Button, Form, Textarea } from "@heroui/react";
 import { useEffect, useRef, useState } from "react";
-
-interface ChatMessage {
-  name: string;
-  message: string;
-}
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
+import { ChatMessage } from "@/server/types/chat";
+import { SettingsIcon } from "./icons/SettingsIcon";
 
 export default function Chat() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [message, setMessage] = useState("");
+  const isMessageEmpty = message.trim().length === 0;
   const socketRef = useRef<WebSocket | null>(null);
+
+  const scrollToBottom = () => {
+    const chatMessagesContainer = document.getElementById(
+      "chat-messages-container"
+    );
+
+    if (chatMessagesContainer) {
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    } else {
+      console.error("chatMessagesContainer is null");
+    }
+  };
 
   useEffect(() => {
     socketRef.current = new WebSocket("ws://localhost:8080");
@@ -23,10 +34,11 @@ export default function Chat() {
       console.log("Message from server:", newMessagesFromServer);
 
       setChatMessages(newMessagesFromServer);
+      scrollToBottom();
     };
 
     socketRef.current.onclose = () => {
-      console.error("WebSocket connection was lost");
+      console.warn("Client disconnected");
     };
 
     return () => socketRef.current.close();
@@ -36,8 +48,10 @@ export default function Chat() {
     e.preventDefault();
 
     if (socketRef.current?.readyState === WebSocket.OPEN) {
-      socketRef.current.send(message);
-      console.log("sent message", message);
+      if (!isMessageEmpty) {
+        socketRef.current.send(message);
+        console.log("sent message", message);
+      }
 
       setMessage("");
     } else {
@@ -53,28 +67,55 @@ export default function Chat() {
   };
 
   return (
-    <div className="col-span-2 flex flex-col justify-between bg-blue-300">
-      <h1 className="ml-2 mt-2 text-xl font-bold">Chat</h1>
-      <div>
+    <div className="ml-2 flex flex-col justify-between">
+      {/* Chat messages */}
+      <div
+        id="chat-messages-container"
+        className="scrollbar-thumb-temp-3 flex h-[80vh] flex-col-reverse overflow-y-auto"
+      >
         {chatMessages.map((messageInfo, idx) => {
           return (
-            <div key={idx} className="mx-4 bg-red-400 px-4">
-              {messageInfo.name}: {messageInfo.message}
+            <div key={idx} className="mb-2 px-2">
+              <p className="bg-temp-3 mb-1 w-fit rounded-md rounded-bl-none px-3 pb-1">
+                {messageInfo.name}
+              </p>
+              <p className="bg-temp-3 min-h-16 rounded-md rounded-tl-none p-1 px-1">
+                {messageInfo.message}
+              </p>
             </div>
           );
         })}
       </div>
-      <Form onSubmit={onSubmit} className="flex flex-row items-center">
+
+      {/* Bottom part */}
+      <form onSubmit={onSubmit} className="mt-1 flex flex-col">
         <Textarea
           name="message"
-          placeholder="Message"
+          placeholder="Send a message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="mb-2 h-20 p-2 pr-0"
-          maxRows={3}
+          onKeyDown={(e) => {
+            if (e.target.value && e.keyCode == 13) {
+              return onSubmit(e);
+            } else if (e.target.value.includes("\n")) {
+              console.log("val", e.target.value);
+              return null;
+            }
+          }}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+          className="h-20"
         />
-        <Button type="submit">Send</Button>
-      </Form>
+        <div className="grid grid-cols-2 items-center pt-2">
+          <Button size="icon-lg" variant="ghost">
+            {/* TODO: Open up a modal for the settings */}
+            <SettingsIcon />
+          </Button>
+          <Button className="w-fit place-self-end" type="submit">
+            Send
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }
