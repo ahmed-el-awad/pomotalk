@@ -38,58 +38,6 @@ export default function Alarm() {
     return () => clearInterval(interval);
   }, [timeDiffInSeconds]);
 
-  function convertSecondsToMinutes(seconds: number): string {
-    if (seconds > 3599) {
-      return "59:59";
-    }
-
-    const mm = Math.floor(seconds / 60)
-      .toString()
-      .padStart(2, "0");
-    const ss = (seconds % 60).toString().padStart(2, "0");
-
-    return `${mm}:${ss}`;
-  }
-
-  function decrementCounter(timer: string): string {
-    let [mins, secs] = timer.split(":").map((str) => parseInt(str));
-
-    if (mins === 0 && secs === 0) {
-      return `time's up!`;
-    }
-
-    if (secs === 0) {
-      if (mins > 0) {
-        mins -= 1;
-        secs = 59;
-      }
-    } else {
-      secs -= 1;
-    }
-
-    const paddedMins = mins.toString().padStart(2, "0");
-    const paddedSecs = secs.toString().padStart(2, "0");
-
-    return `${paddedMins}:${paddedSecs}`;
-  }
-
-  function startCountdown() {
-    let date = new Date();
-
-    let dateAfterTimeAdded = new Date(date.getTime());
-    dateAfterTimeAdded.setMinutes(
-      dateAfterTimeAdded.getMinutes() + minutesInput
-    );
-
-    // the time showing when the timer will end
-    const endingTime = format(dateAfterTimeAdded, "h:mm aaa");
-    console.log(endingTime);
-
-    setEndingTimeDOM(endingTime);
-
-    setTimeDiffInSeconds(differenceInSeconds(dateAfterTimeAdded, date));
-  }
-
   return (
     <React.Fragment>
       <Head>
