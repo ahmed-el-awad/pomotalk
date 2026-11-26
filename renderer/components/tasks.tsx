@@ -1,4 +1,4 @@
-import { Reorder, useDragControls } from "framer-motion";
+import { Reorder } from "framer-motion";
 import Task from "./task";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ export default function Tasks({ isEditing }: Props) {
     { id: 1, text: "Read 5 pages" },
     { id: 2, text: "Read 10 pages" },
     { id: 3, text: "Read 20 pages" },
-    { id: 3, text: "Read 50 pages" },
+    { id: 4, text: "Read 50 pages" },
   ]);
 
   return (
