@@ -6,7 +6,7 @@ import { Crown } from "lucide-react";
 
 export function Header() {
   return (
-    <header className="bg-temp-5 flex justify-between rounded-full p-2">
+    <header className="bg-temp-5 mb-2 flex justify-between rounded-full p-2">
       <section className="flex items-center">
         <Link href="/home">
           <Button size="unstyled" className="rounded-full p-2">
